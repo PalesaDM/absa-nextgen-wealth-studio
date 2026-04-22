@@ -24,7 +24,7 @@ export default function Home() {
 
         <div className="card">
           <h3>Simulation Lab</h3>
-          <p>Interactive studio with inputs → outputs and a clear verdict in SA context.</p>
+          <p>Interactive studio with the inputs → outputs and a clear verdict in SA context.</p>
           <Link className="btn" to="/studios">Open Studios</Link>
         </div>
       </div>
