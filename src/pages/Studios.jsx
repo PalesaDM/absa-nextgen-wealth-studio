@@ -46,12 +46,12 @@ export default function Studios() {
 
         <div className="card">
           <h3>Car Finance vs Uber + Invest</h3>
-          <p>Coming in RC2</p>
+          <Link className="btn" to="/studios/car-vs-uber">Open Studio</Link>
         </div>
 
         <div className="card">
           <h3>Local vs Offshore Allocation</h3>
-          <p>Coming in RC2</p>
+          <Link className="btn" to="/studio/local-vs-offshore">Open studio</Link>
         </div>
       </div>
     </div>

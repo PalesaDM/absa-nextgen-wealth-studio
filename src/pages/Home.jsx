@@ -13,19 +13,19 @@ export default function Home() {
         <div className="card">
           <h3>Money Snapshot</h3>
           <p>See your take-home estimate, fixed costs, debt pressure, and free cashflow in ZAR.</p>
-          <Link className="btn" to="/snapshot">Open Snapshot</Link>
+          <Link className="btn btnPrimary" to="/snapshot">Open Snapshot</Link>
         </div>
 
         <div className="card">
           <h3>Strategy Track</h3>
           <p>Follow one track end-to-end with milestones, progress toggles, and trade-offs.</p>
-          <Link className="btn" to="/tracks">View Tracks</Link>
+          <Link className="btn btnPrimary" to="/tracks">View Tracks</Link>
         </div>
 
         <div className="card">
           <h3>Simulation Lab</h3>
           <p>Interactive studio with the inputs → outputs and a clear verdict in SA context.</p>
-          <Link className="btn" to="/studios">Open Studios</Link>
+          <Link className="btn btnPrimary" to="/studios">Open Studios</Link>
         </div>
       </div>
     </div>

@@ -17,12 +17,14 @@ export default function Tracks() {
 
         <div className="card">
           <h3>Balanced Lifestyle & Investing</h3>
-          <p>Automate saving/investing without killing lifestyle. (Coming in RC2)</p>
+          <p>Automate saving/investing without killing lifestyle.</p>
+          <Link className="btn" to="/tracks/balanced">Open track</Link>
         </div>
 
         <div className="card">
           <h3>Aggressive Global Investor</h3>
-          <p>Higher investing rate + offshore diversification education. (Coming in RC2)</p>
+          <p>Higher investing rate + offshore diversification education.</p>
+          <Link className="btn" to="/tracks/aggressive-global">Open Track</Link>
         </div>
       </div>
     </div>

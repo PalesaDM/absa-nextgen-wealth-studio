@@ -1,13 +1,27 @@
 :root{
-  --bg:#0b0c10;
-  --surface:#11131a;
-  --card:#151824;
-  --text:#e9ecf1;
-  --muted:#a8b0c0;
-  --border:rgba(255,255,255,.08);
-  --accent:#7a002c;
+  /* PRD: warm greys + off-white surfaces, ABSA red sparingly, muted green for progress */
+  --bg: #F6F2EE;            /* warm off-white background */
+  --surface: #FFFFFF;       /* page surface */
+  --card: #FFFFFF;          /* cards */
+  --text: #171717;          /* primary text */
+  --muted: #5E5E5E;         /* secondary text */
+  --border: rgba(0,0,0,.10);
 
-  --r:14px;
+  /* Brand accents */
+  --accent: #7A002C;        /* ABSA-aligned red (sparingly) */
+  --accentSoft: rgba(122,0,44,.10);
+
+  /* Progress/success */
+  --success: #2F6F4E;       /* muted green */
+  --successSoft: rgba(47,111,78,.12);
+
+  /* Warnings/info */
+  --warn: #8A5A00;
+  --warnSoft: rgba(138,90,0,.12);
+
+  --r: 16px;
+  --shadow: 0 10px 25px rgba(0,0,0,.06);
+
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
@@ -16,72 +30,205 @@ body{ margin:0; background:var(--bg); color:var(--text); }
 a{ color:inherit; text-decoration:none; }
 
 .app{ min-height:100vh; }
+
+/* Top nav */
 .topnav{
   position:sticky; top:0;
-  background:rgba(11,12,16,.9);
+  background:rgba(246,242,238,.85);
   backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   padding:14px 18px;
   display:flex; align-items:center; justify-content:space-between;
+  z-index: 10;
 }
-.brand{ font-weight:700; letter-spacing:.2px; }
-.nav{ display:flex; gap:10px; flex-wrap:wrap; }
 
-.container{ max-width:1200px; margin:0 auto; padding:22px 18px; }
+.brand{
+  font-weight:800;
+  letter-spacing:.2px;
+}
+
+.nav{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:22px 18px;
+}
 
 .stack{ display:flex; flex-direction:column; gap:16px; }
-.muted{ color:var(--muted); line-height:1.45; }
+.muted{ color:var(--muted); line-height:1.5; }
 
 .card{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:var(--r);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
   padding:16px;
+  box-shadow: var(--shadow);
 }
+
+/* Layout grids */
 .grid3{ display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; }
 .grid4{ display:grid; grid-template-columns:repeat(4, 1fr); gap:16px; }
 .twoCol{ display:grid; grid-template-columns: 1.1fr .9fr; gap:16px; }
 
+/* Tiles */
 .tile{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--r);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
   padding:14px;
+  box-shadow: var(--shadow);
 }
 .tileLabel{ color:var(--muted); font-size:12px; margin-bottom:6px; }
-.tileValue{ font-size:18px; font-weight:700; }
+.tileValue{ font-size:18px; font-weight:800; }
 
+/* Buttons */
 .btn{
   display:inline-block;
   padding:10px 12px;
-  border-radius:12px;
-  border:1px solid rgba(122,0,44,.45);
-  background:rgba(122,0,44,.25);
-  font-weight:600;
+  border-radius: 14px;
+  border: 1px solid rgba(122,0,44,.35);
+  background: var(--accentSoft);
+  color: var(--accent);
+  font-weight:700;
   margin-top:10px;
 }
 
-.field{ display:flex; flex-direction:column; gap:6px; margin:12px 0; }
-input{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:10px 12px;
-  color:var(--text);
+.btn:hover{
+  background: rgba(122,0,44,.14);
 }
-.error{ color:#fbbf24; font-size:12px; }
+
+/* Form fields */
+.field{ display:flex; flex-direction:column; gap:6px; margin:12px 0; }
+input, select{
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding:10px 12px;
+  color: var(--text);
+  outline: none;
+}
+input:focus, select:focus{
+  border-color: rgba(122,0,44,.35);
+  box-shadow: 0 0 0 4px rgba(122,0,44,.10);
+}
+
+.error{ color:#B42318; font-size:12px; }
+
+/* Info/Explainers */
 .info{
   margin-top:12px;
   padding:12px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.09);
-  background:rgba(255,255,255,.04);
-  color:var(--muted);
-  line-height:1.45;
+  border-radius:14px;
+  border: 1px solid rgba(0,0,0,.08);
+  background: rgba(255,255,255,.75);
+  color: var(--muted);
+  line-height:1.5;
 }
 
+/* Badges / chips (useful for “RC2”, verdict, progress) */
+.badge{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  border:1px solid var(--border);
+  background: rgba(0,0,0,.03);
+  color: var(--muted);
+}
+
+.badgeSuccess{
+  border-color: rgba(47,111,78,.25);
+  background: var(--successSoft);
+  color: var(--success);
+}
+
+.badgeWarn{
+  border-color: rgba(138,90,0,.25);
+  background: var(--warnSoft);
+  color: var(--warn);
+}
+
+.badgeAccent{
+  border-color: rgba(122,0,44,.25);
+  background: var(--accentSoft);
+  color: var(--accent);
+}
+
+hr{ border:0; border-top:1px solid var(--border); margin:14px 0; }
+
+/* Responsive */
 @media (max-width: 980px){
   .grid3{ grid-template-columns:1fr; }
   .grid4{ grid-template-columns:1fr 1fr; }
   .twoCol{ grid-template-columns:1fr; }
+}
+/* ===== PRD POLISH PACK ===== */
+
+/* Better nav contrast + active state clarity */
+.nav a{
+  color: rgba(23,23,23,.62) !important;
+  font-weight: 700;
+}
+.nav a:hover{
+  color: rgba(23,23,23,.90) !important;
+}
+.nav a.active{
+  color: var(--text) !important;
+  background: var(--accentSoft);
+  border: 1px solid rgba(122,0,44,.25);
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+/* Headings more “editorial” */
+h1{
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  margin: 10px 0 12px;
+}
+.container{ padding-top: 28px; }
+
+/* Tiles: prevent awkward wrapping + add visual hierarchy */
+.tileValue{
+  font-size: 22px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.tileLabel{
+  letter-spacing: .2px;
+}
+
+/* Buttons: primary vs neutral */
+.btn{
+  border: 1px solid rgba(122,0,44,.25);
+  background: var(--accentSoft);
+  color: var(--accent);
+}
+.btnPrimary{
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.btnPrimary:hover{ filter: brightness(0.95); }
+.btnGhost{
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Milestone cards: slightly softer border */
+.card{
+  border-color: rgba(0,0,0,.08);
+}
+
+/* Select dropdown: match the UI tone */
+select{
+  background: #fff;
 }
