@@ -13,8 +13,7 @@ export default function StudioLocalVsOffshore() {
   const [localReturn, setLocalReturn] = useState(9);
   const [offshoreReturn, setOffshoreReturn] = useState(10);
 
-  // Currency effect is uncertain; use a simple “FX tailwind/headwind” slider
-  const [fxEffect, setFxEffect] = useState(0); // -3% to +3% per year simplification
+  const [fxEffect, setFxEffect] = useState(0);
 
   const [offshorePct, setOffshorePct] = useState(50);
 

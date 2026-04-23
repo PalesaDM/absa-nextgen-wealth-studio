@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useUser } from "../context/UserContext.jsx";
+import CountUp from "../components/CountUp.jsx";
 
 function formatZAR(value) {
   return new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR" }).format(value || 0);
@@ -20,7 +21,16 @@ function estimateTakeHome(gross, pensionPct = 0) {
 
   return { takeHome, paye, pension };
 }
+function useDebouncedValue(value, delay = 450) {
+  const [debounced, setDebounced] = useState(value);
 
+  useEffect(() => {
+    const t = setTimeout(() => setDebounced(value), delay);
+    return () => clearTimeout(t);
+  }, [value, delay]);
+
+  return debounced;
+}
 export default function Snapshot() {
   const { profile, setProfile } = useUser();
 
@@ -57,6 +67,10 @@ export default function Snapshot() {
   const fixedCosts = form.rent + form.medicalAid + form.otherFixed;
   const freeCashflow = takeHome - fixedCosts - form.debtPayments;
   const debtPressure = takeHome > 0 ? form.debtPayments / takeHome : 0;
+
+  const takeHomeD = useDebouncedValue(takeHome, 450);
+  const fixedCostsD = useDebouncedValue(fixedCosts, 450);
+  const freeCashflowD = useDebouncedValue(freeCashflow, 450);
 
   const status = freeCashflow > 0 && debtPressure < 0.25 ? "On track" : "Needs attention";
 
@@ -163,24 +177,33 @@ export default function Snapshot() {
         </div>
 
         <div className="stack">
-          <div className="grid4">
-            <div className="tile">
-              <div className="tileLabel">Status</div>
-              <div className="tileValue">{status}</div>
-            </div>
-            <div className="tile">
-              <div className="tileLabel">Take-home (est.)</div>
-              <div className="tileValue">{formatZAR(takeHome)}</div>
-            </div>
-            <div className="tile">
-              <div className="tileLabel">Fixed costs</div>
-              <div className="tileValue">{formatZAR(fixedCosts)}</div>
-            </div>
-            <div className="tile">
-              <div className="tileLabel">Free cashflow</div>
-              <div className="tileValue">{formatZAR(freeCashflow)}</div>
-            </div>
-          </div>
+  <div className="grid4">
+    <div className="tile">
+      <div className="tileLabel">Status</div>
+      <div className="tileValue">{status}</div>
+    </div>
+
+    <div className="tile">
+      <div className="tileLabel">Take-home (est.)</div>
+      <div className="tileValue">
+        <CountUp value={takeHomeD} duration={320} format={(v) => formatZAR(Math.round(v))} />
+      </div>
+    </div>
+
+    <div className="tile">
+      <div className="tileLabel">Fixed costs</div>
+      <div className="tileValue">
+        <CountUp value={fixedCostsD} duration={320} format={(v) => formatZAR(Math.round(v))} />
+      </div>
+    </div>
+
+    <div className="tile">
+      <div className="tileLabel">Free cashflow</div>
+      <div className="tileValue">
+        <CountUp value={freeCashflowD} duration={320} format={(v) => formatZAR(Math.round(v))} />
+      </div>
+    </div>
+  </div>
 
           <div className="card">
             <h3>Snapshot breakdown</h3>

@@ -6,7 +6,7 @@ function formatZAR(value) {
   return new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR" }).format(value || 0);
 }
 
-// Same simplified take-home model as Snapshot (keep consistent)
+
 function estimateTakeHome(gross, pensionPct = 0) {
   const pension = gross * (pensionPct / 100);
   const taxable = Math.max(0, gross - pension);
@@ -26,7 +26,7 @@ const STORAGE_KEY = "absa_nextgen_track_first_property_progress_v1";
 export default function TrackFirstProperty() {
   const { profile } = useUser();
 
-  // ---- Derivations from Snapshot ----
+
   const { takeHome } = useMemo(
     () => estimateTakeHome(profile.grossIncome, profile.pensionPct),
     [profile.grossIncome, profile.pensionPct]
@@ -39,12 +39,12 @@ export default function TrackFirstProperty() {
   const essentials = profile.rent + profile.medicalAid + profile.otherFixed;
   const efTarget = essentials * (profile.emergencyFundTargetMonths ?? 3);
 
-  // Simple deposit target logic: use provided target or derive from assumptions
+
   const derivedDepositTarget =
     profile.propertyDepositTarget ??
     Math.round((profile.propertyPriceAssumption ?? 1400000) * ((profile.depositPctAssumption ?? 10) / 100));
 
-  // Suggested monthly contributions (simple rules of thumb)
+  // Suggested monthly contributions 
   const suggestedEmergency = Math.max(0, Math.min(freeCashflow * 0.35, 3500));
   const suggestedDeposit = Math.max(0, Math.min(freeCashflow * 0.45, 6500));
 
@@ -125,7 +125,7 @@ export default function TrackFirstProperty() {
     return Math.round((done / total) * 100);
   }, [milestones, progress]);
 
-  // ---- Dynamic recommendations (based on Snapshot numbers) ----
+  
   const recommendations = useMemo(() => {
     const recs = [];
 
@@ -188,7 +188,7 @@ export default function TrackFirstProperty() {
     suggestedDeposit,
   ]);
 
-  // ---- Nudge examples (trigger-style) ----
+
   const nudges = useMemo(() => {
     const n = [];
     if (debtPressure > 0.30) {
@@ -241,12 +241,17 @@ export default function TrackFirstProperty() {
           {recommendations.map((r, idx) => (
             <div key={idx} className="info">
               <strong>{r.title}:</strong> {r.body}{" "}
+              
               {r.action && (
-                <>
-                  <br />
-                  <Link className="btn" to={r.action.to}>{r.action.label}</Link>
-                </>
-              )}
+  <>
+    <br />
+    {r.action.to?.startsWith("#") ? (
+      <a className="btn" href={r.action.to}>{r.action.label}</a>
+    ) : (
+      <Link className="btn" to={r.action.to}>{r.action.label}</Link>
+    )}
+  </>
+)}
             </div>
           ))}
         </div>

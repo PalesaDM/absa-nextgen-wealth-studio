@@ -1,26 +1,30 @@
 import { NavLink, Outlet } from "react-router-dom";
 
-const linkStyle = ({ isActive }) => ({
-    padding: "8px 10px",
-    borderRadius: 10,
-    textDecoration: "none",
-    color: isActive ? "white" : "#a8b0c0",
-    background: isActive ? "rgba(122,0,44,.25)" : "transparent",
-    border: isActive ? "1px solid rgba(122,0,44,.35)" : "1px solid transparent",
-});
-
 export default function Layout() {
   return (
     <div className="app">
       <header className="topnav">
         <div className="brand">ABSA NextGen Wealth Studio</div>
+
         <nav className="nav">
-          <NavLink to="/" end style={linkStyle}>Home</NavLink>
-          <NavLink to="/snapshot" style={linkStyle}>Money Snapshot</NavLink>
-          <NavLink to="/tracks" style={linkStyle}>Strategy Tracks</NavLink>
-          <NavLink to="/studios" style={linkStyle}>Simulation Lab</NavLink>
-          <NavLink to="/learn" style={linkStyle}>Learn</NavLink>
-          <NavLink to="/profile" style={linkStyle}>Profile</NavLink>
+          <NavLink to="/" end className={({ isActive }) => (isActive ? "active" : "")}>
+            Home
+          </NavLink>
+          <NavLink to="/snapshot" className={({ isActive }) => (isActive ? "active" : "")}>
+            Money Snapshot
+          </NavLink>
+          <NavLink to="/tracks" className={({ isActive }) => (isActive ? "active" : "")}>
+            Strategy Tracks
+          </NavLink>
+          <NavLink to="/studios" className={({ isActive }) => (isActive ? "active" : "")}>
+            Simulation Lab
+          </NavLink>
+          <NavLink to="/learn" className={({ isActive }) => (isActive ? "active" : "")}>
+            Learn
+          </NavLink>
+          <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>
+            Profile
+          </NavLink>
         </nav>
       </header>
 

@@ -6,7 +6,7 @@ function formatZAR(value) {
   return new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR" }).format(value || 0);
 }
 
-// Basic amortization monthly payment
+// Basic monthly payment
 function monthlyBondPayment(principal, annualRatePct, years) {
   const r = (annualRatePct / 100) / 12;
   const n = years * 12;
@@ -14,7 +14,7 @@ function monthlyBondPayment(principal, annualRatePct, years) {
   return principal * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
 }
 
-// Keep consistent with your Snapshot model (simplified)
+
 function estimateTakeHome(gross, pensionPct = 0) {
   const pension = gross * (pensionPct / 100);
   const taxable = Math.max(0, gross - pension);
@@ -76,19 +76,19 @@ export default function StudioRentVsBuyJhb() {
 
   const monthlyDifference = useMemo(() => ownershipMonthly - rentMonthly, [ownershipMonthly, rentMonthly]);
 
-  // Invest-the-difference future value (simple compounding)
+
   const investFV = useMemo(() => {
     const monthlyRate = (investReturn / 100) / 12;
     const n = horizonYears * 12;
     const contrib = Math.max(0, monthlyDifference); // if owning costs more, investing difference = owning minus rent? (but here we invest when rent is cheaper)
     // If monthlyDifference > 0, renting is cheaper; invest that difference.
-    // If monthlyDifference <= 0, buying is cheaper; invest 0 (or you could invest the savings, but keep MVP simple).
+    // If monthlyDifference <= 0, buying is cheaper; invest 0 (or you could invest the savings).
     if (contrib <= 0) return 0;
-    // FV of annuity
+
     return contrib * ((Math.pow(1 + monthlyRate, n) - 1) / monthlyRate);
   }, [investReturn, horizonYears, monthlyDifference]);
 
-  // Affordability checks (simple)
+  // Affordability checks
   const takeHomeFromSalary = useMemo(() => estimateTakeHome(salary, profile.pensionPct).takeHome, [salary, profile.pensionPct]);
 
   const fixedCosts = (profile.medicalAid ?? 0) + (profile.otherFixed ?? 0) + rentMonthly + (profile.debtPayments ?? 0);
@@ -97,9 +97,9 @@ export default function StudioRentVsBuyJhb() {
   const freeCashflowRenting = takeHomeFromSalary - fixedCosts;
   const freeCashflowBuying = takeHomeFromSalary - fixedCostsIfBuy;
 
-  // Verdict logic (transparent, simple)
+  // Verdict logic
   const verdict = useMemo(() => {
-    // If buying makes cashflow negative, it’s a clear “not now”
+
     if (freeCashflowBuying < 0) {
       return {
         badge: "Needs more buffer",

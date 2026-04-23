@@ -6,7 +6,7 @@ function formatZAR(v) {
 }
 
 export default function StudioCarVsUber() {
-  // Inputs (simplified SA assumptions)
+  
   const [carInstallment, setCarInstallment] = useState(6500);
   const [insurance, setInsurance] = useState(1600);
   const [fuel, setFuel] = useState(2200);
@@ -26,7 +26,6 @@ export default function StudioCarVsUber() {
   const monthlyDiff = useMemo(() => carTotal - uberMonthly, [carTotal, uberMonthly]);
 
   const investFV = useMemo(() => {
-    // If Uber is cheaper, invest the difference. If car is cheaper, invest 0 (keep MVP simple).
     const contrib = Math.max(0, monthlyDiff);
     if (contrib <= 0) return 0;
     const r = (investReturn / 100) / 12;

@@ -4,12 +4,12 @@ const UserContext = createContext(null);
 
 export function UserProvider({ children }) {
   const [profile, setProfile] = useState({
-    // Identity / defaults
+    // Identity 
     fullName: "Dumisani",
     city: "Johannesburg",
 
     // Recently viewed studios
-    recentStudios: [], // e.g. ["rent-vs-buy-jhb"]
+    recentStudios: [], 
 
     // Money Snapshot inputs
     grossIncome: 58000,
@@ -25,12 +25,12 @@ export function UserProvider({ children }) {
     propertyPriceAssumption: 1400000,
     depositPctAssumption: 10,
 
-    // Behaviour / preferences
+    // Behaviour
     timeHorizonYears: 5,
     selectedTrack: "first-property",
   });
 
-  // ✅ Function lives OUTSIDE the profile object
+  
   const markStudioViewed = useCallback((studioSlug) => {
     setProfile((prev) => {
       const current = prev.recentStudios || [];
