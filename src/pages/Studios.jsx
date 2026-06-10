@@ -7,6 +7,16 @@ const studioMeta = {
     desc: "Compare rent vs bond costs, levies/rates and affordability using simplified SA assumptions.",
     to: "/studios/rent-vs-buy-jhb",
   },
+  "car-vs-uber" : {
+    title: "Car Finance vs Uber + Invest",
+    desc: "Compare the true monthly cost of a financed car vs ride-hailing, then estimate investing the difference over 3-5 years.",
+    to: "/studios/car-vs-uber",
+  },
+  "local-vs-offshore": {
+    title: "Local vs Offshore Alllocation",
+    desc: "Explore allocation trade-offs over 5 years with a simple FX tailwind/headwind assumption.",
+    to: "/studios/local-vs-offshore",
+  },
 };
 
 export default function Studios() {

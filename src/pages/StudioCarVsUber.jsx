@@ -1,11 +1,16 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/UserContext.jsx";
+import { formatZAR } from "../logic/format.js";
 
-function formatZAR(v) {
-  return new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR", maximumFractionDigits: 0 }).format(v || 0);
-}
+
 
 export default function StudioCarVsUber() {
+  const { markStudioViewed } = useUser();
+
+useEffect(() => {
+  markStudioViewed("car-vs-uber");
+}, [markStudioViewed]);
   
   const [carInstallment, setCarInstallment] = useState(6500);
   const [insurance, setInsurance] = useState(1600);
