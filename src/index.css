@@ -82,6 +82,34 @@ html{ scroll-behavior:smooth; }
   box-shadow: 0 1px 8px rgba(0,0,0,.10);
 }
 
+.navUser{
+  color: rgba(255,255,255,.85);
+  font-weight: 700;
+  padding: 9px 10px;
+  white-space: nowrap;
+}
+/* Nav button (logout) styled for red navbar */
+.navBtn{
+  padding: 9px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.12);
+  color: rgba(255,255,255,.92);
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1;
+  transition: background .14s ease, transform .12s ease, opacity .12s ease;
+}
+
+.navBtn:hover{
+  background: rgba(255,255,255,.18);
+  color: #fff;
+}
+
+.navBtn:active{
+  transform: translateY(1px) scale(0.99);
+}
+
 /* ===== Layout ===== */
 .container{
   max-width:1200px;

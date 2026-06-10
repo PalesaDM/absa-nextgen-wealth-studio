@@ -30,22 +30,11 @@ export default function Layout() {
           </NavLink>
 
           {auth?.user?.email && (
-            <span style={{ color: "rgba(255,255,255,.85)", fontWeight: 700, padding: "9px 10px" }}>
-              {auth.user.email}
+            <span className="navUser">{auth.user.email}
             </span>
           )}
 
-          <button
-             type="button"
-             onClick={logout}
-             className="btn"
-             style={{
-              marginTop: 0,
-              background: "rgba(255,255,255,.12)",
-              borderColor: "rgba(255,255,255,.18)",
-              color: "#fff",
-             }}
-          >
+          <button type="button" onClick={logout} className="navBtn">
             Log out
           </button>
         </nav>

@@ -29,6 +29,11 @@ export default function Login() {
       <h1>Sign in</h1>
       <p className="muted">Prototype login for exam submission. Not real ABSA authentication.</p>
 
+      <div className="info">
+        <strong>Demo login:</strong> This is a prototype for exam submission - not real ABSA authentication.
+        No data is sent to a server.
+      </div>
+
       <form className="card" onSubmit={onSubmit}>
         <label className="field">
           Email
