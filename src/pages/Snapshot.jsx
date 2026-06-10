@@ -1,26 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useUser } from "../context/UserContext.jsx";
 import CountUp from "../components/CountUp.jsx";
+import { estimateTakeHome } from "../logic/finance.js";
+import { formatZAR } from "../logic/format.js";
 
-function formatZAR(value) {
-  return new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR" }).format(value || 0);
-}
 
-// Simplified SA take-home estimate (consistent, not perfectly accurate)
-function estimateTakeHome(gross, pensionPct = 0) {
-  const pension = gross * (pensionPct / 100);
-  const taxable = Math.max(0, gross - pension);
 
-  // MVP tax model: simple effective rate bands
-  let rate = 0.18;
-  if (taxable > 50000) rate = 0.23;
-  if (taxable > 70000) rate = 0.26;
-
-  const paye = taxable * rate;
-  const takeHome = gross - pension - paye;
-
-  return { takeHome, paye, pension };
-}
 function useDebouncedValue(value, delay = 450) {
   const [debounced, setDebounced] = useState(value);
 

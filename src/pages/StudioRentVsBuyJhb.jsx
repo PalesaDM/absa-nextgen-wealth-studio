@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { useUser } from "../context/UserContext.jsx";
 import { Link } from "react-router-dom";
+import { estimateTakeHome } from "../logic/finance.js";
+import { formatZAR } from "../logic/format.js";
 
-function formatZAR(value) {
-  return new Intl.NumberFormat("en-ZA", { style: "currency", currency: "ZAR" }).format(value || 0);
-}
+
 
 // Basic monthly payment
 function monthlyBondPayment(principal, annualRatePct, years) {
@@ -15,16 +15,7 @@ function monthlyBondPayment(principal, annualRatePct, years) {
 }
 
 
-function estimateTakeHome(gross, pensionPct = 0) {
-  const pension = gross * (pensionPct / 100);
-  const taxable = Math.max(0, gross - pension);
-  let rate = 0.18;
-  if (taxable > 50000) rate = 0.23;
-  if (taxable > 70000) rate = 0.26;
-  const paye = taxable * rate;
-  const takeHome = gross - pension - paye;
-  return { takeHome };
-}
+
 
 export default function StudioRentVsBuyJhb() {
   const { profile, markStudioViewed } = useUser();
