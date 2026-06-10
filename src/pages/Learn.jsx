@@ -41,55 +41,64 @@ export default function Learn() {
         Short, South Africa–aware explainers that appear across Snapshot, Tracks and Studios.
         The goal is confidence, not complexity — with real figures where it matters.
       </p>
+<div className="grid3 learnGrid">
+  <div className="card cardHover">
+    <h3>PAYE & take-home (SARS)</h3>
+    <p className="muted">
+      Planning from gross can create false confidence. Your lifestyle and goals must fit your take-home.
+    </p>
+    <ul>
+      <li>Budget from net pay, not gross.</li>
+      <li>Tax tables change by year — always sanity-check against SARS.</li>
+      <li>
+        Practical tip: if you want exact PAYE, use SARS “Tax deduction tables” (weekly/monthly/annual).
+      </li>
+    </ul>
 
-      <div className="grid3">
-        <div className="card cardHover">
-          <h3>PAYE & take-home (SARS)</h3>
-          <p className="muted">
-            Planning from gross can create false confidence. Your lifestyle and goals must fit your take-home.
-          </p>
-          <ul>
-            <li>Budget from net pay, not gross.</li>
-            <li>Tax tables change by year — always sanity-check against SARS.</li>
-            <li>
-              Practical tip: if you want exact PAYE, use SARS “Tax deduction tables” (weekly/monthly/annual).
-            </li>
-          </ul>
-          <div className="info">
-            <strong>Reference:</strong> SARS “Rates of tax for individuals” and “Tax deduction tables”.
-          </div>
-        </div>
-
-        <div className="card cardHover">
-          <h3>Emergency fund</h3>
-          <p className="muted">
-            Before property or upgrades, build stability. It reduces anxiety and prevents revolving credit dependence.
-          </p>
-          <ul>
-            <li>Starter buffer first (2–4 weeks of essentials).</li>
-            <li>Then target <strong>3 months</strong> of essentials (common benchmark).</li>
-            <li>Keep it accessible (not locked or volatile).</li>
-          </ul>
-          <div className="info">
-            <strong>Why this matters:</strong> it prevents “panic debt” when something goes wrong.
-          </div>
-        </div>
-
-        <div className="card cardHover">
-          <h3>Bond vs rent (ownership cost reality)</h3>
-          <p className="muted">
-            A bond repayment is not the full cost of owning in South Africa.
-          </p>
-          <ul>
-            <li>Include levies/rates, insurance, maintenance.</li>
-            <li>Rates can rise → repayment stress.</li>
-            <li>Renting can be strategic while building deposit.</li>
-          </ul>
-          <div className="info">
-            <strong>Reference rate:</strong> Prime lending rate is currently shown by SARB as <strong>10.50%</strong> (check before deciding).
-          </div>
-        </div>
+    <div className="learnBottom">
+      <div className="info">
+        <strong>Reference:</strong> SARS “Rates of tax for individuals” and “Tax deduction tables”.
       </div>
+    </div>
+  </div>
+
+  <div className="card cardHover">
+    <h3>Emergency fund</h3>
+    <p className="muted">
+      Before property or upgrades, build stability. It reduces anxiety and prevents revolving credit dependence.
+    </p>
+    <ul>
+      <li>Starter buffer first (2–4 weeks of essentials).</li>
+      <li>
+        Then target <strong>3 months</strong> of essentials (common benchmark).
+      </li>
+      <li>Keep it accessible (not locked or volatile).</li>
+    </ul>
+
+    <div className="learnBottom">
+      <div className="info">
+        <strong>Why this matters:</strong> it prevents “panic debt” when something goes wrong.
+      </div>
+    </div>
+  </div>
+
+  <div className="card cardHover">
+    <h3>Bond vs rent (ownership cost reality)</h3>
+    <p className="muted">A bond repayment is not the full cost of owning in South Africa.</p>
+    <ul>
+      <li>Include levies/rates, insurance, maintenance.</li>
+      <li>Rates can rise → repayment stress.</li>
+      <li>Renting can be strategic while building deposit.</li>
+    </ul>
+
+    <div className="learnBottom">
+      <div className="info">
+        <strong>Reference rate:</strong> Prime lending rate is currently shown by SARB as{" "}
+        <strong>10.50%</strong> (check before deciding).
+      </div>
+    </div>
+  </div>
+</div>
 
       <div className="card">
         <h3>TFSA (Tax-Free Savings Account): concrete limits</h3>

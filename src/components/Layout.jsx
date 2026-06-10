@@ -1,8 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useAuth } from "../context/AuthContext.jsx";
+import { useTheme } from "../context/ThemeContext.jsx";
 
 export default function Layout() {
   const { auth, logout } = useAuth();
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="app">
@@ -33,6 +35,10 @@ export default function Layout() {
             <span className="navUser">{auth.user.email}
             </span>
           )}
+
+          <button type="button" onClick={toggleTheme} className="navBtn">
+            {theme === "dark" ? "Light mode" : "Dark mode"}
+          </button>
 
           <button type="button" onClick={logout} className="navBtn">
             Log out
