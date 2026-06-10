@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import Layout from "./components/Layout.jsx";
 
+import Login from "./pages/Login.jsx";
 import Home from "./pages/Home.jsx";
 import Snapshot from "./pages/Snapshot.jsx";
 import Tracks from "./pages/Tracks.jsx";
@@ -17,24 +19,30 @@ import Profile from "./pages/Profile.jsx";
 export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/snapshot" element={<Snapshot />} />
+      {/* Public */}
+      <Route path="/login" element={<Login />} />
 
-        <Route path="/tracks" element={<Tracks />} />
-        <Route path="/tracks/first-property" element={<TrackFirstProperty />} />
-        <Route path="/tracks/balanced" element={<TrackBalancedLifestyle />} />
-        <Route path="/tracks/aggressive-global" element={<TrackAggressiveGlobal />} />
+      {/* Protected */}
+      <Route element={<ProtectedRoute />}>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/snapshot" element={<Snapshot />} />
 
-        <Route path="/studios" element={<Studios />} />
-        <Route path="/studios/rent-vs-buy-jhb" element={<StudioRentVsBuyJhb />} />
-        <Route path="/studios/car-vs-uber" element={<StudioCarVsUber />} />
-        <Route path="/studios/local-vs-offshore" element={<StudioLocalVsOffshore />} />
+          <Route path="/tracks" element={<Tracks />} />
+          <Route path="/tracks/first-property" element={<TrackFirstProperty />} />
+          <Route path="/tracks/balanced" element={<TrackBalancedLifestyle />} />
+          <Route path="/tracks/aggressive-global" element={<TrackAggressiveGlobal />} />
 
-        <Route path="/learn" element={<Learn />} />
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/studios" element={<Studios />} />
+          <Route path="/studios/rent-vs-buy-jhb" element={<StudioRentVsBuyJhb />} />
+          <Route path="/studios/car-vs-uber" element={<StudioCarVsUber />} />
+          <Route path="/studios/local-vs-offshore" element={<StudioLocalVsOffshore />} />
 
-        <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/learn" element={<Learn />} />
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
       </Route>
     </Routes>
   );
