@@ -205,7 +205,7 @@ export default function Profile() {
           </label>
 
           <button className="btn" onClick={save} disabled={!isValid}>
-            Save Profile
+            Save profile
           </button>
 
           <button className="btn" style={{ marginLeft: 10 }} onClick={resetRecentlyViewed}>
@@ -224,7 +224,7 @@ export default function Profile() {
             <li>Emergency fund target: {form.emergencyFundTargetMonths} months</li>
           </ul>
           <div className="info">
-            Tip: change these values, click <strong>Save Profile</strong>, then go to Snapshot/Track/Studio and confirm everything updates.
+            Tip: change these values, click <strong>Save profile</strong>, then go to Snapshot/Track/Studio and confirm everything updates.
           </div>
         </div>
       </div>

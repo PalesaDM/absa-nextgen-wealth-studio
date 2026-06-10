@@ -59,7 +59,7 @@ export default function Studios() {
           <p className="muted">
             Compare the true monthly cost of owning a financed car vs ride-hailing, then estimate investing the difference over 3-5 years.
           </p>
-          <Link className="btn btnPrimary" to="/studios/car-vs-uber">Open Studio</Link>
+          <Link className="btn btnPrimary" to="/studios/car-vs-uber">Open studio</Link>
         </div>
 
         <div className="card cardEqual cardHover">

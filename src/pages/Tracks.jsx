@@ -24,7 +24,7 @@ export default function Tracks() {
         <div className="card cardHover">
           <h3>Aggressive Global Investor</h3>
           <p>Higher investing rate + offshore diversification education.</p>
-          <Link className="btn btnPrimary" to="/tracks/aggressive-global">Open Track</Link>
+          <Link className="btn btnPrimary" to="/tracks/aggressive-global">Open track</Link>
         </div>
       </div>
     </div>
